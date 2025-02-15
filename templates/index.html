@@ -11,9 +11,22 @@
             padding: 10px;
             margin: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .experience-box:hover {
+            background-color: #f8f9fa;
         }
         .selected {
             background-color: #e7f3ff;
+            border-color: #0d6efd;
+        }
+        .job-dates {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        .company-name {
+            color: #495057;
+            font-style: italic;
         }
     </style>
 </head>
@@ -29,8 +42,10 @@
                     {% for title in titles %}
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">{{ title }}</h5>
-                            <div class="selected-experiences"></div>
+                            <h5 class="card-title">{{ title.title }}</h5>
+                            <div class="company-name">{{ title.company }}</div>
+                            <div class="job-dates">{{ title.start_date }} - {{ title.end_date }}</div>
+                            <div class="selected-experiences mt-3"></div>
                             <button class="btn btn-primary btn-sm mt-2" onclick="addExperienceToTitle(this)">
                                 Add Experience
                             </button>
@@ -84,11 +99,19 @@
             
             selectedExperiences.forEach(exp => {
                 const newExp = document.createElement('div');
-                newExp.className = 'alert alert-info mb-2';
-                newExp.textContent = exp.textContent.trim();
+                newExp.className = 'alert alert-info mb-2 position-relative';
+                newExp.innerHTML = `
+                    ${exp.textContent.trim()}
+                    <button type="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" 
+                            onclick="removeExperience(this)"></button>
+                `;
                 targetTitle.appendChild(newExp);
                 exp.classList.remove('selected');
             });
+        }
+
+        function removeExperience(button) {
+            button.closest('.alert').remove();
         }
 
         function buildResume() {
@@ -97,12 +120,16 @@
 
             titles.forEach(title => {
                 const titleText = title.querySelector('.card-title').textContent;
+                const company = title.querySelector('.company-name').textContent;
+                const dates = title.querySelector('.job-dates').textContent;
                 const experiences = Array.from(title.querySelectorAll('.selected-experiences .alert'))
-                    .map(exp => exp.textContent);
+                    .map(exp => exp.textContent.trim());
 
                 if (experiences.length > 0) {
                     resumeData.push({
                         title: titleText,
+                        company: company,
+                        dates: dates,
                         experiences: experiences
                     });
                 }
@@ -117,6 +144,8 @@
                 jobSection.className = 'mb-4';
                 jobSection.innerHTML = `
                     <h3>${job.title}</h3>
+                    <div class="company-name mb-2">${job.company}</div>
+                    <div class="job-dates mb-3">${job.dates}</div>
                     <ul>
                         ${job.experiences.map(exp => `<li>${exp}</li>`).join('')}
                     </ul>
