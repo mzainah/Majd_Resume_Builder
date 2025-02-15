@@ -1,0 +1,30 @@
+Led regulatory projects focusing on credit risk, integrating Moody's Risk Frontier, and improved financial asset measurement
+Designed and managed robust data engineering solutions with Azure Data Lake,including ADF Azure Data Factory, Databricks, and Snowflake, automating ETL with Python and SQL
+Utilized advanced algorithms and machine learning techniques, such as anomaly detection, to analyze large-scale datasets and extract actionable insights. Applied expertise in Big Data analytics, Data Engineering, and Data Mining, with hands-on experience in GCP, Kafka, and Spark.
+Employed KYC principles and Machine Learning expertise in past projects, facilitating the development of innovative solutions.
+Executed SQL queries and managed relational databases, while utilizing Power BI and Tableau for data visualization and reporting.
+Engineered data models to boost quality and integration, ensuring seamless data workflows and compliance with governance policies
+Spearheaded Data Integration projects,performed data mapping ,worked with Bitbucket and GitHub followed CI/CD approach
+Obtained Familiarity with Unity Catalog, Sales force ,Restful APIS,Moody's Analytics,Biocatch.
+Increased data processing efficiency by {30%} using Azure Data Factory, SSIS, FiveTran, and Qlik ETL tools.
+Collaborated with cross-functional teams to analyze customer transactions, design business insights, and deliver data-driven solutions, ensuring alignment with organizational goals and customer needs.
+Led end-to-end project delivery, including requirements gathering, data cleaning, manipulation, and visualization using tools such as Tableau, SQL, Python, and Excel to support strategic decision-making.
+Developed and presented comprehensive decks to business partners, effectively communicating complex analytical findings and actionable recommendations.
+Prioritized and managed multiple tasks in a fast-paced environment, ensuring timely delivery of high-quality results while adhering to project timelines and budgets.
+Partnered with stakeholders to identify and resolve operational inefficiencies, leveraging Data bricks and advanced analytics to drive process improvements and enhance customer experience.
+Defined and analyzed Business Intelligence solutions, Data Warehouses, and Data Marts with meticulous attention to detail
+Provided technical leadership on data wrangling and requirements gathering for various analytics projects.
+Managed and integrated data for analytics projects, leading offshore development teams and conducting daily touchpoints
+Excelled in ETL development (SSIS), data warehousing, data modeling, and analytics, handling extensive Big Data and complex datasets
+Collaborated on an SAS Anti Money Laundering (AML) and KYC solution upgrade project, gathering business requirements and managing seamless project execution
+Hands-on experience with major cloud providers Azure,AWS and Google
+Analyzed large datasets using SQL, Python,Pandas ,Sckikit-Learn and Reporting tools to extract meaningful insights and enhance Anomaly Detection, Leveraged specialized tools and skills to troubleshoot and resolve anomalies
+Designed and executed rigorous data testing procedures to identify and rectify issues, Ensured data accuracy and consistency through thorough validation processes
+Generated actionable recommendations for business stakeholders, contributing to informed decision-making
+Articulated problem statements, bridging the gap between technical and non-technical audiences, Presented data-driven insights in a compelling manner during meetings and presentations
+Demonstrated strong technical skills using APIS,Azure Storage ,Dataverse ,CDS ,Continuous integration ,performance analysis,SSRS and T-SQL
+Designed ASP.NET web applications; implemented MVC, Singleton, Factory, and Observer patterns for enhanced scalability and performance.
+Automated tasks using PowerShell and CRON to boost efficiency; conducted code reviews and mentored juniors, ensuring best practices adherence.
+Managed full software development lifecycle, from gathering requirements to deployment, focusing on high-quality, scalable ASP.NET and SharePoint solutions.
+Utilized Git and TFVC for collaborative code management; participated in Agile methodologies to deliver projects on time.
+Optimized Microsoft SQL Server databases, promoting effective data management through indexing, and efficient SQL queries implementation.

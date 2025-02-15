@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .experience-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .selected {
+            background-color: #e7f3ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Resume Builder</h1>
+        
+        <!-- Job Titles Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3>Job Titles</h3>
+                <div id="titles-container">
+                    {% for title in titles %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ title }}</h5>
+                            <div class="selected-experiences"></div>
+                            <button class="btn btn-primary btn-sm mt-2" onclick="addExperienceToTitle(this)">
+                                Add Experience
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Pool Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3>Experience Pool</h3>
+                <div id="experience-pool">
+                    {% for experience in experiences %}
+                    <div class="experience-box" onclick="toggleSelection(this)">
+                        {{ experience }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Build Resume Button -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <button class="btn btn-success" onclick="buildResume()">Build Resume</button>
+            </div>
+        </div>
+
+        <!-- Final Resume Section -->
+        <div class="row">
+            <div class="col-12">
+                <div id="final-resume" class="border p-4" style="display: none;">
+                    <h2>Final Resume</h2>
+                    <div id="resume-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSelection(element) {
+            element.classList.toggle('selected');
+        }
+
+        function addExperienceToTitle(button) {
+            const selectedExperiences = document.querySelectorAll('#experience-pool .selected');
+            const targetTitle = button.closest('.card-body').querySelector('.selected-experiences');
+            
+            selectedExperiences.forEach(exp => {
+                const newExp = document.createElement('div');
+                newExp.className = 'alert alert-info mb-2';
+                newExp.textContent = exp.textContent.trim();
+                targetTitle.appendChild(newExp);
+                exp.classList.remove('selected');
+            });
+        }
+
+        function buildResume() {
+            const titles = document.querySelectorAll('.card');
+            const resumeData = [];
+
+            titles.forEach(title => {
+                const titleText = title.querySelector('.card-title').textContent;
+                const experiences = Array.from(title.querySelectorAll('.selected-experiences .alert'))
+                    .map(exp => exp.textContent);
+
+                if (experiences.length > 0) {
+                    resumeData.push({
+                        title: titleText,
+                        experiences: experiences
+                    });
+                }
+            });
+
+            // Display the final resume
+            const resumeContent = document.getElementById('resume-content');
+            resumeContent.innerHTML = '';
+            
+            resumeData.forEach(job => {
+                const jobSection = document.createElement('div');
+                jobSection.className = 'mb-4';
+                jobSection.innerHTML = `
+                    <h3>${job.title}</h3>
+                    <ul>
+                        ${job.experiences.map(exp => `<li>${exp}</li>`).join('')}
+                    </ul>
+                `;
+                resumeContent.appendChild(jobSection);
+            });
+
+            document.getElementById('final-resume').style.display = 'block';
+
+            // Send data to server
+            fetch('/build_resume', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(resumeData)
+            });
+        }
+    </script>
+</body>
+</html>
