@@ -28,3 +28,66 @@ Automated tasks using PowerShell and CRON to boost efficiency; conducted code re
 Managed full software development lifecycle, from gathering requirements to deployment, focusing on high-quality, scalable ASP.NET and SharePoint solutions.
 Utilized Git and TFVC for collaborative code management; participated in Agile methodologies to deliver projects on time.
 Optimized Microsoft SQL Server databases, promoting effective data management through indexing, and efficient SQL queries implementation.
+### **Power BI**
+Designed and developed interactive Power BI dashboards to visualize key business metrics, enabling stakeholders to make data-driven decisions.
+Optimized Power BI reports by implementing DAX calculations and performance tuning, reducing report load times by 30%.
+Integrated Power BI with multiple data sources, including SQL databases and Azure services, to create a unified reporting platform.
+
+### **Fabric**
+Leveraged Microsoft Fabric to streamline data integration and orchestration workflows, improving data pipeline efficiency by 25%.
+Designed and implemented data solutions using Fabric to enable seamless data sharing across departments, enhancing collaboration.
+Utilized Fabric's data governance features to ensure compliance with data security and privacy regulations.
+
+### **SQL**
+Developed complex SQL queries and stored procedures to extract, transform, and load (ETL) data from multiple sources into a centralized data warehouse.
+Optimized SQL database performance by indexing, query tuning, and partitioning, resulting in a 40% reduction in query execution time.
+Designed and maintained relational database schemas to support scalable and efficient data storage and retrieval.
+
+### **Data Factory**
+Built and managed ETL pipelines using Azure Data Factory to automate data ingestion and transformation processes.
+Integrated Data Factory with on-premises and cloud data sources, enabling seamless data movement and synchronization.
+Monitored and troubleshooted Data Factory pipelines to ensure data accuracy and pipeline reliability, reducing downtime by 20%.
+
+### **Databricks**
+Developed and deployed scalable data processing solutions using Databricks, enabling real-time analytics on large datasets.
+Utilized Databricks notebooks to perform advanced data transformations and machine learning model training.
+Implemented Delta Lake on Databricks to ensure data reliability and version control, improving data quality and consistency.
+
+### **Spark**
+Designed and optimized Apache Spark jobs to process large-scale datasets, reducing processing time by 50%.
+Implemented Spark Streaming to enable real-time data processing and analytics for business-critical applications.
+Troubleshot and resolved performance bottlenecks in Spark clusters, ensuring efficient resource utilization and scalability.
+
+### **Snowflake**
+Architected and implemented a Snowflake data warehouse to support enterprise-level analytics and reporting.
+Optimized Snowflake queries and data storage to reduce costs and improve query performance by 35%.
+Integrated Snowflake with various data sources and BI tools to create a centralized data platform for the organization.
+
+### **Azure**
+Designed and deployed cloud-based data solutions on Microsoft Azure, including Azure SQL, Data Lake, and Synapse.
+Implemented Azure DevOps for CI/CD pipelines to automate the deployment of data engineering solutions.
+Utilized Azure Monitor and Log Analytics to track data pipeline performance and ensure high availability.
+
+### **Synapse**
+Built and managed data pipelines in Azure Synapse Analytics to enable large-scale data processing and analytics.
+Integrated Synapse with Power BI and other visualization tools to provide real-time insights to business users.
+Optimized Synapse workloads by implementing partitioning and indexing strategies, improving query performance by 30%.
+### **Python**
+Designed and implemented scalable data architecture solutions using Python to support complex data processing and analytics workflows.
+Developed custom Python scripts to automate data ingestion, transformation, and loading (ETL) processes, reducing manual effort by 40%.
+Architected Python-based microservices to enable seamless integration between data systems and applications, improving system interoperability.
+
+### **Python Libraries (Pandas, NumPy, Scikit-learn)**
+Utilized Pandas and NumPy to preprocess and analyze large datasets, enabling the creation of robust data models for business insights.
+Designed and implemented machine learning pipelines using Scikit-learn, enhancing predictive analytics capabilities for the organization.
+Optimized data manipulation and transformation tasks using Pandas, reducing processing time by 30% for large-scale datasets.
+
+### **Flask**
+Architected and deployed RESTful APIs using Flask to enable secure and efficient data access for internal and external applications.
+Designed a Flask-based data service layer to integrate multiple data sources, providing a unified interface for data consumers.
+Implemented authentication and authorization mechanisms in Flask applications to ensure data security and compliance with industry standards.
+
+### **NLTK (Natural Language Toolkit)**
+Designed and implemented natural language processing (NLP) pipelines using NLTK to extract insights from unstructured text data.
+Leveraged NLTK to build sentiment analysis models, enabling the organization to analyze customer feedback and improve decision-making.
+Architected text preprocessing workflows using NLTK, improving the accuracy and efficiency of NLP models by 25%.

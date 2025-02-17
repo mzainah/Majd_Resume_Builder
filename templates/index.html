@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Builder</title>
+    <title>Majdi's Resume Builder</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .experience-box {
+        .experience-box, .skill-box {
             border: 1px solid #ddd;
             padding: 10px;
             margin: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            border-radius: 4px;
         }
-        .experience-box:hover {
+        .experience-box:hover, .skill-box:hover {
             background-color: #f8f9fa;
         }
         .selected {
@@ -28,11 +29,44 @@
             color: #495057;
             font-style: italic;
         }
+        .skill-box {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 15px;
+            background-color: #f8f9fa;
+        }
+        .skills-container {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">Resume Builder</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Builder</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/help">Help</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
     <div class="container mt-4">
-        <h1>Resume Builder</h1>
+        <h1>Majdi's Resume Builder</h1>
         
         <!-- Job Titles Section -->
         <div class="row mb-4">
@@ -64,6 +98,20 @@
                     {% for experience in experiences %}
                     <div class="experience-box" onclick="toggleSelection(this)">
                         {{ experience }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Skills Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3>Technical Skills</h3>
+                <div class="skills-container">
+                    {% for skill in skills %}
+                    <div class="skill-box" onclick="toggleSelection(this)">
+                        {{ skill }}
                     </div>
                     {% endfor %}
                 </div>
@@ -116,7 +164,11 @@
 
         function buildResume() {
             const titles = document.querySelectorAll('.card');
-            const resumeData = [];
+            const selectedSkills = document.querySelectorAll('.skill-box.selected');
+            const resumeData = {
+                jobs: [],
+                skills: Array.from(selectedSkills).map(skill => skill.textContent.trim())
+            };
 
             titles.forEach(title => {
                 const titleText = title.querySelector('.card-title').textContent;
@@ -126,7 +178,7 @@
                     .map(exp => exp.textContent.trim());
 
                 if (experiences.length > 0) {
-                    resumeData.push({
+                    resumeData.jobs.push({
                         title: titleText,
                         company: company,
                         dates: dates,
@@ -139,7 +191,8 @@
             const resumeContent = document.getElementById('resume-content');
             resumeContent.innerHTML = '';
             
-            resumeData.forEach(job => {
+            // Add jobs
+            resumeData.jobs.forEach(job => {
                 const jobSection = document.createElement('div');
                 jobSection.className = 'mb-4';
                 jobSection.innerHTML = `
@@ -152,6 +205,17 @@
                 `;
                 resumeContent.appendChild(jobSection);
             });
+
+            // Add skills section
+            if (resumeData.skills.length > 0) {
+                const skillsSection = document.createElement('div');
+                skillsSection.className = 'mb-4';
+                skillsSection.innerHTML = `
+                    <h3>Technical Skills</h3>
+                    <p>${resumeData.skills.join(', ')}</p>
+                `;
+                resumeContent.appendChild(skillsSection);
+            }
 
             document.getElementById('final-resume').style.display = 'block';
 

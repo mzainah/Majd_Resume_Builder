@@ -1,5 +1,13 @@
-Senior Developer | Tech Corp | 2019-2023
-Project Manager | Innovation Inc | 2015-2019
 Data Scientist |Scotiabank |06/2024 - 10/2024
-Data Engineer Architect |Scotia bank |06/2018 - 11/2023
+Data developer |Scotiabank |06/2024 - 10/2024
+Data Engineer |Scotiabank |06/2024 - 10/2024
+Data Architect|Scotiabank |06/2024 - 10/2024
+
+Data Engineer ,Architect |Scotia bank |06/2018 - 11/2023
+Data Architect |Scotia bank |06/2018 - 11/2023
+
 Business Intelligence Developer |Deloitte |03/2016 - 04/2018
+Data Analyst |Deloitte |03/2016 - 04/2018
+Data Engineer|Deloitte |03/2016 - 04/2018
+
+Software Engineer | CCC | 01/2010 - 06/2015

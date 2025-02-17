@@ -13,7 +13,6 @@ class JobTitle:
     @classmethod
     def from_line(cls, line):
         try:
-            # Expected format: "Title | Company | StartDate-EndDate"
             parts = [part.strip() for part in line.split('|')]
             if len(parts) == 3:
                 title = parts[0]
@@ -26,61 +25,40 @@ class JobTitle:
             print(f"Error parsing line: {line}, Error: {e}")
         return None
 
-def read_experiences(filename):
-    # Get absolute path
+def read_file_content(filename):
     file_path = os.path.join(os.path.dirname(__file__), filename)
-    print(f"Attempting to read experiences from: {file_path}")
-    
+    print(f"Attempting to read from: {file_path}")
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
-            experiences = [line.strip() for line in file if line.strip()]
-            print(f"Read {len(experiences)} experiences:")
-            for exp in experiences:
-                print(f"- {exp}")
-            return experiences
+            return [line.strip() for line in file if line.strip() and not line.strip().upper() == 'SKILLS']
     except FileNotFoundError:
-        print(f"Experience file not found: {file_path}")
+        print(f"File not found: {file_path}")
         return []
     except Exception as e:
-        print(f"Error reading experience file: {e}")
+        print(f"Error reading file: {e}")
         return []
 
-def read_titles(filename):
-    # Get absolute path
-    file_path = os.path.join(os.path.dirname(__file__), filename)
-    print(f"Attempting to read titles from: {file_path}")
-    
+def read_experiences():
+    return read_file_content('experience.txt')
+
+def read_titles():
     titles = []
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            lines = file.readlines()
-            print(f"Read {len(lines)} lines from titles file:")
-            for line in lines:
-                line = line.strip()
-                print(f"Processing line: {line}")
-                if line:
-                    job_title = JobTitle.from_line(line)
-                    if job_title:
-                        titles.append(job_title)
-                        print(f"Added title: {job_title.title} at {job_title.company}")
-    except FileNotFoundError:
-        print(f"Titles file not found: {file_path}")
-    except Exception as e:
-        print(f"Error reading titles file: {e}")
-    
-    print(f"Total titles processed: {len(titles)}")
+    for line in read_file_content('titles.txt'):
+        job_title = JobTitle.from_line(line)
+        if job_title:
+            titles.append(job_title)
     return titles
+
+def read_skills():
+    skills = read_file_content('skills.txt')
+    return sorted(skills)  # Sort skills alphabetically
 
 @app.route('/')
 def index():
-    # Read experiences and titles from files
-    print("\n=== Reading Experiences ===")
-    experiences = read_experiences('experience.txt')
+    experiences = read_experiences()
+    titles = read_titles()
+    skills = read_skills()
     
-    print("\n=== Reading Titles ===")
-    titles = read_titles('titles.txt')
-    
-    # Convert titles to dictionary for template
     title_dicts = [
         {
             'title': title.title,
@@ -91,18 +69,24 @@ def index():
         for title in titles
     ]
     
-    print(f"\nSending to template:")
+    print(f"\nLoaded data:")
     print(f"- {len(experiences)} experiences")
     print(f"- {len(title_dicts)} titles")
+    print(f"- {len(skills)} skills")
     
     return render_template('index.html', 
                          experiences=experiences, 
-                         titles=title_dicts)
+                         titles=title_dicts,
+                         skills=skills)
 
 @app.route('/build_resume', methods=['POST'])
 def build_resume():
     data = request.get_json()
     return jsonify({'status': 'success', 'resume': data})
+
+@app.route('/help')
+def help():
+     return render_template('help.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
